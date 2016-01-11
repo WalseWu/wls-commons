@@ -1,0 +1,23 @@
+package ${package};
+
+import java.io.Serializable;
+
+public class ${className} implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+<#list properties as pro>
+	private ${pro.proType} ${pro.proName};
+</#list>
+	
+<#list properties as pro>
+	public void set<@upperFC>${pro.proName}</@upperFC>(${pro.proType} ${pro.proName}){
+		this.${pro.proName}=${pro.proName};
+	}
+	
+	public ${pro.proType} get<@upperFC>${pro.proName}</@upperFC>(){
+		return this.${pro.proName};
+	}
+	
+</#list>
+}

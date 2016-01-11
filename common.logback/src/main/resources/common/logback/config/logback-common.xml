@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_HOME" value="${LOG_FILE_PATH}"/>
+    <property name="LOG_HIST_HOME" value="${LOG_HOME}/history"/>
+	<property name="FRAMEWORK_LOG" value="100"/>
+	<property name="BUZ_LOG" value="101"/>
+	<property name="DAL_DIGEST" value="102"/>
+	<property name="SAL_DIGEST" value="103"/>
+	<property name="ERROR_LOG" value="104"/>
+	<property name="LOG_FILE_PREFIX" value="${PROJECT_NAME}"/>
+	
+	<!-- Alipay日志配置 
+	<appender name="alipayAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-alipay.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-alipay.15d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<logger name="alipay" level="INFO" additivity="false">
+		<appender-ref ref="alipayAppender" />
+	</logger>
+	-->
+	<!-- 手机短信日志配置 
+	<appender name="mobileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-mobile.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-mobile.15d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+	</appender>
+	-->
+	<!-- <logger name="common.cloud.mobile.MobileService" level="INFO" additivity="false">
+		<appender-ref ref="mobileAppender" />
+	</logger> -->
+	<!-- 七牛服务日志配置 
+	<appender name="qiniuAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-qiniu.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-qiniu.15d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<logger name="com.huishi.sz.common.cloud.media.QiniuMediaService" level="INFO" additivity="false">
+		<appender-ref ref="qiniuAppender" />
+	</logger>
+	-->
+	
+	
+	<appender name="frameworkAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-framework.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [${PROJECT_ID}${FRAMEWORK_LOG}] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-framework.15d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-error.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [${PROJECT_ID}${ERROR_LOG}] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-error.30d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="buzAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${LOG_FILE_PREFIX}-buz.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [${PROJECT_ID}${BUZ_LOG}] [%thread] [%logger:%line] - [%msg]%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>ACCEPT</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${LOG_HIST_HOME}/${LOG_FILE_PREFIX}-buz.15d.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 10MB -->
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<logger name="org.apache" level="WARN" additivity="false">
+		<appender-ref ref="frameworkAppender" />
+	</logger>
+	<logger name="com.alibaba" level="INFO" additivity="false">
+		<appender-ref ref="frameworkAppender" />
+	</logger>
+	<logger name="org.quartz" level="INFO" additivity="false">
+		<appender-ref ref="frameworkAppender" />
+	</logger>
+	<logger name="common" level="INFO" additivity="false">
+		<appender-ref ref="buzAppender" />
+		<appender-ref ref="errorAppender" />
+	</logger>
+	<root level="WARN">
+        <appender-ref ref="frameworkAppender" />
+    </root>
+</configuration>
