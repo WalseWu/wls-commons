@@ -203,7 +203,7 @@
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<junit.version>4.11</junit.version>
-		<fastjson.version>1.1.31</fastjson.version>
+		<fastjson.version>1.2.31</fastjson.version>
 
 		<cglib.version>3.1</cglib.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
